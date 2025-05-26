@@ -1,6 +1,6 @@
 //import { useState } from 'react'
-import './App.css'
 import BookingForm from './components/BookingForm'
+import './App.css'
 //import axios from 'axios'
 
 
