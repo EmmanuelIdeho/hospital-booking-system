@@ -1,23 +1,46 @@
 package com.example.backend.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
-@Entity
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
+@Entity //specifies that this class is an entity and must be mapped to a database table.
+@Table(name="appointment")
 public class Appointment {
+    //specifies the primary key of the entity, and that the primary key should be generated automatically.
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Column(nullable = false)
     private String patientName;
+
+    @Column(nullable = false)
+    private String email;
+
+    @Column(nullable = false)
+    private String phoneNumber;
+
+    @Column(nullable = false)
     private LocalDate date;
+
+    @Column(nullable = false)
     private LocalTime time;
 
-    public Appointment(String patientName, LocalDate date, LocalTime time) {
+    public Appointment() {
+        
+    }
+
+    public Appointment(String patientName, String email, String phoneNumber, LocalDate date, LocalTime time) {
         this.patientName = patientName;
+        this.email = email;
+        this.phoneNumber = phoneNumber;
         this.date = date;
         this.time = time;
     }
@@ -28,6 +51,22 @@ public class Appointment {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+     public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email){
+        this.email = email;
+    }
+
+    public String getPhoneNumber(){
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber){
+        this.phoneNumber = phoneNumber;
     }
 
     public String getPatientName() {
@@ -58,48 +97,40 @@ public class Appointment {
     public int hashCode() {
         final int prime = 31;
         int result = 1;
-        result = prime * result + ((id == null) ? 0 : id.hashCode());
-        result = prime * result + ((patientName == null) ? 0 : patientName.hashCode());
+        result = prime * result + ((id == null) ? 0 : id.hashCode());result = prime * result + ((patientName == null) ? 0 : patientName.hashCode());
+        result = prime * result + ((email == null) ? 0 : email.hashCode());
+        result = prime * result + ((phoneNumber == null) ? 0 : phoneNumber.hashCode());
         result = prime * result + ((date == null) ? 0 : date.hashCode());
         result = prime * result + ((time == null) ? 0 : time.hashCode());
         return result;
     }
 
-    @Override
+   @Override
     public boolean equals(Object obj) {
         if (this == obj)
             return true;
-        if (obj == null)
-            return false;
-        if (getClass() != obj.getClass())
+        if (obj == null || getClass() != obj.getClass())
             return false;
         Appointment other = (Appointment) obj;
-        if (id == null) {
-            if (other.id != null)
-                return false;
-        } else if (!id.equals(other.id))
+        if (id == null ? other.id != null : !id.equals(other.id))
             return false;
-        if (patientName == null) {
-            if (other.patientName != null)
-                return false;
-        } else if (!patientName.equals(other.patientName))
+        if (patientName == null ? other.patientName != null : !patientName.equals(other.patientName))
             return false;
-        if (date == null) {
-            if (other.date != null)
-                return false;
-        } else if (!date.equals(other.date))
+        if (email == null ? other.email != null : !email.equals(other.email))
             return false;
-        if (time == null) {
-            if (other.time != null)
-                return false;
-        } else if (!time.equals(other.time))
+        if (phoneNumber == null ? other.phoneNumber != null : !phoneNumber.equals(other.phoneNumber))
+            return false;
+        if (date == null ? other.date != null : !date.equals(other.date))
+            return false;
+        if (time == null ? other.time != null : !time.equals(other.time))
             return false;
         return true;
     }
 
+
     @Override
     public String toString() {
-        return "Appointment [id=" + id + ", patientName=" + patientName + ", date=" + date + ", time=" + time + "]";
+        return "Appointment [id=" + id + ", patientName=" + patientName + ", email=" + email + ", phoneNumber=" + phoneNumber + ", date=" + date + ", time=" + time + "]";
     }    
     
     
