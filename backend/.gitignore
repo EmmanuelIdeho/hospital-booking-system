@@ -12,3 +12,8 @@ application.properties
 
 ### VS Code ###
 .vscode/
+
+*.sqlite
+*.sqlite3
+db.sqlite
+db/
