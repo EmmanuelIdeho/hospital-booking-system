@@ -40,7 +40,6 @@ public class AppointmentService {
             appointment.setPatientName(updatedAppointment.getPatientName());
             appointment.setEmail(updatedAppointment.getEmail());
             appointment.setPhoneNumber(updatedAppointment.getPhoneNumber());
-            appointment.setPhoneNumber(updatedAppointment.getPhoneNumber());
             appointment.setDate(updatedAppointment.getDate());
             appointment.setTime(updatedAppointment.getTime());
 
