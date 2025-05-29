@@ -1,30 +1,41 @@
 import { Box, Button, TextField, Typography } from "@mui/material";
+import axios from "axios";
+import { Appointment } from "../types/Appointment";
 import { useState } from "react";
 
 function BookingForm() {
-  const [formData, setFormData] = useState({
-    name: "",
-    phone: "",
+  const [formData, setFormData] = useState<Appointment>({
+    patientName: "",
+    phoneNumber: "",
     email: "",
     date: "",
     time: "",
   });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    const {name, value} = e.target;
+    setFormData(prev => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Form submitted:", formData);
-    setFormData({
-      name: "",
-      phone: "",
-      email: "",
-      date: "",
-      time: "",
-    });
-    alert("Submitted!");
+    try {
+      const response = await axios.post<Appointment>("http://localhost:8080/api/v1/appoint"); 
+      console.log(response.data);
+      setFormData({
+        patientName: "",
+        phoneNumber: "",
+        email: "",
+        date: "",
+        time: "",
+      });
+
+      alert(`Successfully created appointment for ${response.data.patientName}`);
+
+    } catch(error){
+     console.log("Error booking appointment: ", error);
+    }
+    
   };
 
   return (
@@ -51,7 +62,7 @@ function BookingForm() {
       <TextField
         label="Your Name"
         name="name"
-        value={formData.name}
+        value={formData.patientName}
         onChange={handleChange}
         required
       />
@@ -60,7 +71,7 @@ function BookingForm() {
         label="Phone number"
         type="tel"
         name="phone"
-        value={formData.phone}
+        value={formData.phoneNumber}
         onChange={handleChange}
         required
       />
