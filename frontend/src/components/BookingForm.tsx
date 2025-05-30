@@ -20,7 +20,14 @@ function BookingForm() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      const response = await axios.post<Appointment>("http://localhost:8080/api/v1/appoint"); 
+      const newAppointment: Appointment = {
+        patientName: formData.patientName,
+        phoneNumber: formData.phoneNumber,
+        email: formData.email,
+        date: formData.date,
+        time: formData.time
+      };
+      const response = await axios.post<Appointment>("http://localhost:8080/api/v1/appoint", newAppointment); 
       console.log(response.data);
       setFormData({
         patientName: "",
@@ -61,7 +68,7 @@ function BookingForm() {
 
       <TextField
         label="Your Name"
-        name="name"
+        name="patientName"
         value={formData.patientName}
         onChange={handleChange}
         required
@@ -70,7 +77,7 @@ function BookingForm() {
       <TextField
         label="Phone number"
         type="tel"
-        name="phone"
+        name="phoneNumber"
         value={formData.phoneNumber}
         onChange={handleChange}
         required
