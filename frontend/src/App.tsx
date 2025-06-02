@@ -1,5 +1,5 @@
 //import { useState } from 'react'
-import BookingForm from './components/BookingForm'
+//import BookingForm from './components/BookingForm'
 import Navbar from './components/Navbar'
 import AppointmentList from './components/AppointmentList';
 import './App.css'
@@ -11,7 +11,7 @@ function App() {
   return (
     <>
     <Navbar />
-    <BookingForm />
+    <AppointmentList />
     </>
     
   )

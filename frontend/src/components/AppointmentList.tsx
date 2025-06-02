@@ -14,11 +14,7 @@ function AppointmentList() {
     .catch(err => console.log("Failed to fetch appointments", err));
   }, []);
     return (
-      <Box>
-        <Typography>
-          All my appointments
-        </Typography>
-
+      <Box alignItems={"left"}>
         {appointments.length === 0 ? (<Typography>No appointments found</Typography>) : 
         (appointments.map(app => (<AppointmentCard key={app.id} appointment={app}/>)))
         }
