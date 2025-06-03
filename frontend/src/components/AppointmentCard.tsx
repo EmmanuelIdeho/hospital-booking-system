@@ -15,7 +15,7 @@ function AppointmentCard({ appointment }: Props) {
 
   const cancelAppointment = async (id: number) => {
     try{
-      await axios.delete(`http://localhost:8080/api/v1/appointments/{id}`)
+      await axios.delete(`http://localhost:8080/api/v1/appointments/${id}`)
       alert("Successfully cancelled appointment");
       window.location.reload();
     }catch(err){
