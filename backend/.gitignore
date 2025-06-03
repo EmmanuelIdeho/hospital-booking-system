@@ -17,3 +17,4 @@ application.properties
 *.sqlite3
 db.sqlite
 db/
+data/
