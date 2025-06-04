@@ -64,7 +64,9 @@ npm run dev
 ---
 
 ### Screenshots
+![](./screenshot.png)
 
+![](./screenshot2.png)
 ---
 
 ## MVP Checklist
