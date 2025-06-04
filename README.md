@@ -80,7 +80,7 @@ npm run dev
 ---
 
 ## Future Improvements
-- [ ] Appointment editing and cancellation
+- [ ] Appointment editing
 - [ ] Admin login and authentication
 - [ ] PostgreSQL support for production
 - [ ] Responsive mobile design
