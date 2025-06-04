@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.*;
 import com.example.backend.model.Appointment;
 import com.example.backend.service.AppointmentService;
 
+import jakarta.validation.Valid;
+
 @RestController
 @CrossOrigin(origins = "http://localhost:5173")
 @RequestMapping("/api/v1")
@@ -29,7 +31,7 @@ public class AppointmentController {
     }
     
     @PostMapping("/appoint")
-    public ResponseEntity<Appointment> saveAppointment(@RequestBody Appointment appointment){
+    public ResponseEntity<Appointment> saveAppointment(@Valid @RequestBody Appointment appointment){
         try{
             Appointment newAppointment = appointmentService.saveAppointment(appointment);
             return ResponseEntity.ok(newAppointment);

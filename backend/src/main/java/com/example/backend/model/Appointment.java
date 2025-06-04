@@ -9,6 +9,8 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.Pattern;
 
 @Entity //specifies that this class is an entity and must be mapped to a database table.
 @Table(name="appointment")
@@ -22,9 +24,14 @@ public class Appointment {
     private String patientName;
 
     @Column(nullable = false)
+    @Email(message = "Invalid email address")
     private String email;
 
     @Column(nullable = false)
+    @Pattern(
+        regexp = "^\\+?[0-9\\-\\s]{10,20}$",
+        message = "Phone number must contain only digits, spaces, or dashes, and be between 10 and 20 characters"
+    )
     private String phoneNumber;
 
     @Column(nullable = false)
