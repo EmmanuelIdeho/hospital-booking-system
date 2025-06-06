@@ -4,6 +4,9 @@ target/
 !**/src/main/**/target/
 !**/src/test/**/target/
 
+!db/migration/
+!db/migration/*.sql
+
 # Environment/Sensitive files
 .env
 application-dev.properties
@@ -18,3 +21,6 @@ application.properties
 db.sqlite
 db/
 /data/
+
+
+
