@@ -72,15 +72,13 @@ npm run dev
 ## MVP Checklist
 
 - [x] Booking form UI
-- [x] Save appointments to H2 file-based DB
-- [x] Display appointments in grid layout
 - [x] Format dates and times nicely
 - [x] Page navigation via navbar
+- [x] PostgreSQL support for production
 
 ---
 
 ## Future Improvements
 - [ ] Appointment editing
 - [ ] Admin login and authentication
-- [ ] PostgreSQL support for production
 - [ ] Responsive mobile design
