@@ -73,7 +73,7 @@ public class Appointment {
     }
 
     public void setPhoneNumber(String phoneNumber){
-        this.phoneNumber = phoneNumber;
+        this.phoneNumber = phoneNumber.replaceAll("[^0-9]", "");
     }
 
     public String getPatientName() {
@@ -133,13 +133,6 @@ public class Appointment {
             return false;
         return true;
     }
-
-
-    @Override
-    public String toString() {
-        return "Appointment [id=" + id + ", patientName=" + patientName + ", email=" + email + ", phoneNumber=" + phoneNumber + ", date=" + date + ", time=" + time + "]";
-    }    
-    
     
     
 }
