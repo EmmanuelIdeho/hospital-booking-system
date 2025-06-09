@@ -47,7 +47,7 @@ public class Appointment {
     public Appointment(String patientName, String email, String phoneNumber, LocalDate date, LocalTime time) {
         this.patientName = patientName;
         this.email = email;
-        this.phoneNumber = phoneNumber;
+        this.phoneNumber = phoneNumber.replaceAll("[^0-9]", "");;
         this.date = date;
         this.time = time;
     }
