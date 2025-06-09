@@ -1,13 +1,8 @@
-//import { useState } from 'react'
 import { BrowserRouter as Router, Routes, Route } from 'react-router';
 import Navbar from './components/Navbar'
 import './App.css'
 import React, { Suspense } from 'react';
 import LoadingSpinner from './components/LoadingSpinner';
-
-//import { Typography } from '@mui/material';
-//import axios from 'axios'
-
 
 function App() {
   const Main = React.lazy(() => import('./components/Main'));
