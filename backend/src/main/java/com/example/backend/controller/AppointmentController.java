@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 
 import com.example.backend.model.Appointment;
 import com.example.backend.service.AppointmentService;
+import com.example.backend.service.SmsService;
 
 import jakarta.validation.Valid;
 
@@ -22,10 +23,8 @@ public class AppointmentController {
 
     private final AppointmentService appointmentService;
 
-    @GetMapping("/hello")
-    public String helloWorld(){
-        return "Hello world";
-    }
+    @Autowired
+    private SmsService smsService;
 
     @Autowired
     public AppointmentController(AppointmentService appointmentService){
@@ -36,6 +35,8 @@ public class AppointmentController {
     public ResponseEntity<Appointment> saveAppointment(@Valid @RequestBody Appointment appointment){
         try{
             Appointment newAppointment = appointmentService.saveAppointment(appointment);
+            smsService.sendSms(appointment.getPhoneNumber(), 
+    "Thank you for booking with us, " + appointment.getPatientName() + "! Your appointment is confirmed for " + appointment.getDate());
             return ResponseEntity.ok(newAppointment);
         }catch(Exception e){
              return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
