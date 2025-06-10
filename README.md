@@ -9,7 +9,7 @@ This full-stack web application was built to simplify the process of booking, ma
 - Book an appointment with name, email, phone, date, and time
 - View all upcoming appointments in a responsive grid layout
 - Displays date like `June 6th 2025` and time like `10:00 AM`
-- Persistent local H2 database storage
+- Persistent PostgreSQL database & dockerized backend
 - Navigate between pages using React Router
 - Styled with Material UI
 
@@ -21,13 +21,11 @@ This full-stack web application was built to simplify the process of booking, ma
 - React + TypeScript
 - Vite build tool
 - Material UI
-- Axios
-- React Router
 
 **Backend:**
 - Java + Spring Boot
 - Spring Web, Spring Data JPA
-- H2 Database (file-based)
+- PostgreSQL database
 
 ---
 
@@ -45,11 +43,10 @@ This full-stack web application was built to simplify the process of booking, ma
 
 ```bash
 cd backend
-.\mvnw spring-boot:run
+docker-compose up --build 
 ```
 - Visit the API: `http://localhost:8080/api/v1/appointments`
 - Access the H2 Console: `http://localhost:8080/h2-console`
-- Use `JDBC URL: jdbc:h2:file:./data/testdb`
 
 ---
 
@@ -74,11 +71,12 @@ npm run dev
 - [x] Booking form UI
 - [x] Format dates and times nicely
 - [x] Page navigation via navbar
-- [x] PostgreSQL support for production
+- [x] PostgreSQL support
+- [x] SMS notification to client
 
 ---
 
 ## Future Improvements
 - [ ] Appointment editing
 - [ ] Admin login and authentication
-- [ ] Responsive mobile design
+- [ ] Email notfication to client
