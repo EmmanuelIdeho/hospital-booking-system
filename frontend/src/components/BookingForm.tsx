@@ -108,6 +108,13 @@ function BookingForm() {
         required
       />
 
+      <TextField
+    type="text"
+    name="clinicCode"
+    style={{ display: "none" }}
+    autoComplete="off"
+    />
+
       <Button type="submit" variant="contained" color="primary">
         Book Now
       </Button>
