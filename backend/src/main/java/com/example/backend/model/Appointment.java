@@ -40,6 +40,8 @@ public class Appointment {
     @Column(nullable = false)
     private LocalTime time;
 
+    private String clinicCode;
+
     public Appointment() {
         
     }
@@ -98,6 +100,14 @@ public class Appointment {
 
     public void setTime(LocalTime time) {
         this.time = time;
+    }
+
+    public String getClinicCode(){
+        return clinicCode;
+    }
+
+    public void setClinicCode(String clinicCode){
+        this.clinicCode = clinicCode;
     }
 
     @Override

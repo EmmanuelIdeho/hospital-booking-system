@@ -32,8 +32,9 @@ public class AppointmentController {
     }
     
     @PostMapping("/appoint")
-    public ResponseEntity<Appointment> saveAppointment(@Valid @RequestBody Appointment appointment){
+    public ResponseEntity<?> saveAppointment(@Valid @RequestBody Appointment appointment){
         try{
+             if(appointment.getClinicCode() != null && !appointment.getClinicCode().isEmpty()){return ResponseEntity.badRequest().body("You're a bot!");}
             Appointment newAppointment = appointmentService.saveAppointment(appointment);
             smsService.sendSms(appointment.getPhoneNumber(), 
     "Thank you for booking with us, " + appointment.getPatientName() + "! Your appointment is confirmed for " + appointment.getDate());
