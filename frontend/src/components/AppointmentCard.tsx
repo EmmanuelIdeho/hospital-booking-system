@@ -31,9 +31,9 @@ function AppointmentCard({ appointment }: Props) {
         title={<Typography variant="h4" align={"left"}>{appointment.patientName}</Typography>}>  
           
         </CardHeader>
-        <Typography align="left">Has appointment on {formatDate} at {formatTime}.</Typography>
-        <Typography align="left">{appointment.email}</Typography>
-        <Typography align="left">{appointment.phoneNumber}</Typography>
+        <Typography align="left">Has an appointment on {formatDate} at {formatTime}.</Typography>
+        <Typography align="left">Email: {appointment.email}</Typography>
+        <Typography align="left">Phone#: {appointment.phoneNumber}</Typography>
         <Button color="error" onClick={() => cancelAppointment(appointment.id ?? 0)}>
               Cancel
         </Button>
