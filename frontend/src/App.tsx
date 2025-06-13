@@ -5,10 +5,10 @@ import React, { Suspense } from 'react';
 import LoadingSpinner from './components/LoadingSpinner';
 
 function App() {
-  const Main = React.lazy(() => import('./components/Main'));
-  const BookingForm = React.lazy(() => import('./components/BookingForm'));
-  const AppointmentList = React.lazy(() => import('./components/AppointmentList'));
-  const NotFound = React.lazy(() => import('./components/NotFound'));
+  const Main = React.lazy(() => import('./pages/Main'));
+  const BookingForm = React.lazy(() => import('./pages/BookingForm'));
+  const AppointmentList = React.lazy(() => import('./pages/AppointmentList'));
+  const NotFound = React.lazy(() => import('./pages/NotFound'));
 
 
   return (
