@@ -26,4 +26,7 @@ RUN ./mvnw clean package -DskipTests
 EXPOSE 8080
 
 # Run the application
-CMD ["./mvnw", "spring-boot:run"]
+#CMD ["./mvnw", "spring-boot:run"] <- use in development
+
+#For deployment:
+CMD ["java", "-jar", "target/backend-0.0.1-SNAPSHOT.jar"] 
