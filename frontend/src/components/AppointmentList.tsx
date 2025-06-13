@@ -24,7 +24,7 @@ function AppointmentList() {
         ) : (
           <Grid container spacing={3}>
             {appointments.map(app => (
-              <Grid items xs={12} sm={6} md={4} lg={3} key={app.id}>
+              <Grid  size={{ xs:12, sm:6, md:4, lg:3}} key={app.id}>
                 <AppointmentCard appointment={app} />
               </Grid>
             ))}
