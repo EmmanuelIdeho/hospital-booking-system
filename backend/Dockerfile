@@ -1,32 +1,31 @@
-# Use a secure and stable OpenJDK 21 base image
-FROM eclipse-temurin:21-jdk-alpine
+# ---------- Stage 1: Build the application ----------
+FROM eclipse-temurin:21-jdk-alpine AS build
 
-# Set the working directory inside the container
 WORKDIR /app
 
-# Install dependencies like certs 
-RUN apk update && apk add --no-cache ca-certificates && update-ca-certificates
+RUN apk update && apk add --no-cache bash curl tar git ca-certificates && update-ca-certificates
 
-RUN apk add --no-cache bash curl tar git
-
-# Copy Maven wrapper files (optional if you use ./mvnw)
+# Copy Maven wrapper and pom.xml
 COPY .mvn/ .mvn
 COPY mvnw pom.xml ./
 
-# Download dependencies
+# Pre-fetch dependencies
 RUN ./mvnw dependency:go-offline -B
 
-# Copy the rest of the project files
+# Copy the source code
 COPY src ./src
 
 # Package the application
 RUN ./mvnw clean package -DskipTests
 
-# Expose the backend port (change if not 8080)
+# ---------- Stage 2: Run the app ----------
+FROM eclipse-temurin:21-jdk-alpine
+
+WORKDIR /app
+
+# Copy the jar from the build stage
+COPY --from=build /app/target/backend-0.0.1-SNAPSHOT.jar app.jar
+
 EXPOSE 8080
 
-# Run the application
-#CMD ["./mvnw", "spring-boot:run"] <- use in development
-
-#For deployment:
-CMD ["java", "-jar", "target/backend-0.0.1-SNAPSHOT.jar"] 
+CMD ["java", "-jar", "app.jar"]

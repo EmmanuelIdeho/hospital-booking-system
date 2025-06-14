@@ -11,7 +11,9 @@ services:
       - pgdata:/var/lib/postgresql/data
 
   hospital-backend:
-    build: .
+    build:
+      context: ./
+      dockerfile: Dockerfile
     ports:
       - "8080:8080"
     env_file:
@@ -27,7 +29,6 @@ services:
     depends_on:
       - postgres
     volumes:
-      - .:/app
       - ~/.m2:/root/.m2
     
 
