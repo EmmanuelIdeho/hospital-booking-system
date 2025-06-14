@@ -9,9 +9,6 @@ RUN apk update && apk add --no-cache bash curl tar git ca-certificates && update
 COPY .mvn/ .mvn
 COPY mvnw pom.xml ./
 
-# Pre-fetch dependencies
-RUN ./mvnw dependency:go-offline -B
-
 # Copy the source code
 COPY src ./src
 
