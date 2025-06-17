@@ -25,19 +25,34 @@ function AppointmentCard({ appointment }: Props) {
   };
 
     return (
-      <Card variant="outlined" sx={{ mb: 5 }}>
-      <CardContent>
-        <CardHeader avatar={<Avatar>{appointment.patientName[0]}</Avatar>}
-        title={<Typography variant="h4" align={"left"}>{appointment.patientName}</Typography>}>  
-          
-        </CardHeader>
-        <Typography align="left">Has an appointment on {formatDate} at {formatTime}.</Typography>
-        <Typography align="left">Email: {appointment.email}</Typography>
-        <Typography align="left">Phone#: {appointment.phoneNumber}</Typography>
+      <Card variant="outlined"
+      sx={{
+        display: "flex",
+        flexDirection: "row",
+        alignItems: "center",
+        width: "100%",
+        maxWidth: 400,
+        height: 200,
+        mx: "auto",
+        my: 2,
+        px: 2,
+      }}
+      >
+
+      <Avatar sx={{ width: 64, height: 64, mr: 3 }}>
+        {appointment.patientName?.[0]}
+      </Avatar>
+
+      <CardContent  sx={{ flex: 1 }}>
+        <Typography variant="h6" sx={{ fontWeight: "bold" }}> {appointment.patientName} </Typography>
+        <Typography>Has an appointment on {formatDate} at {formatTime}.</Typography>
+        <Typography>Email: {appointment.email}</Typography>
+        <Typography>Phone#: {appointment.phoneNumber}</Typography>
+      </CardContent>
         <Button color="error" onClick={() => cancelAppointment(appointment.id ?? 0)}>
               Cancel
         </Button>
-      </CardContent>
+     
     </Card>
       
     )

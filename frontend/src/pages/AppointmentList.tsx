@@ -22,9 +22,9 @@ function AppointmentList() {
         {appointments.length === 0 ? (
           <Typography textAlign="center">No appointments found</Typography>
         ) : (
-          <Grid container spacing={3}>
-            {appointments.map(app => (
-              <Grid  size={{ xs:12, sm:6, md:4, lg:3}} key={app.id}>
+          <Grid container justifyContent="center">
+            {appointments.map((app) => (
+              <Grid size={{ xs:12 }} key={app.id}>
                 <AppointmentCard appointment={app} />
               </Grid>
             ))}
