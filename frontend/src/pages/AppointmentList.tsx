@@ -6,10 +6,11 @@ import { Box, Grid, Typography } from "@mui/material";
 
 function AppointmentList() {
 
+  const baseURL = import.meta.env.VITE_API_URL;
   const [appointments, setAppointments] = useState<Appointment[]>([]);
 
   useEffect(() => {
-    axios.get<Appointment[]>("http://localhost:8080/api/v1/appointments")
+    axios.get<Appointment[]>(`${baseURL}/api/v1/appointments`)
     .then(response => setAppointments(response.data))
     .catch(err => console.log("Failed to fetch appointments", err));
   }, []);

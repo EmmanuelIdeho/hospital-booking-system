@@ -17,6 +17,7 @@ function BookingForm() {
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
+  const baseURL = import.meta.env.VITE_API_URL;
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
@@ -27,7 +28,7 @@ function BookingForm() {
         date: formData.date,
         time: formData.time
       };
-      const response = await axios.post<Appointment>("http://localhost:8080/api/v1/appoint", newAppointment); 
+      const response = await axios.post<Appointment>(`${baseURL}/api/v1/appoint`, newAppointment); 
       console.log(response.data);
       setFormData({
         patientName: "",

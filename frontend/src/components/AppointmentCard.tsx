@@ -9,13 +9,14 @@ interface Props {
 
 function AppointmentCard({ appointment }: Props) {
 
+  const baseURL = import.meta.env.VITE_API_URL;
   const formatDate = format(new Date(appointment.date), "MMMM do yyyy");
   const parseTime = parse(appointment.time, "HH:mm:ss", new Date());
   const formatTime = format(parseTime, "h:mm a"); 
 
   const cancelAppointment = async (id: number) => {
     try{
-      await axios.delete(`http://localhost:8080/api/v1/appointments/${id}`)
+      await axios.delete(`${baseURL}/api/v1/appointments/${id}`)
       alert("Successfully cancelled appointment");
       window.location.reload();
     }catch(err){
