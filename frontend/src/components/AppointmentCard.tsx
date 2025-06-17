@@ -1,5 +1,5 @@
 import { Appointment } from "../types/Appointment";
-import { Avatar, Button, Card, CardContent, CardHeader, Typography} from "@mui/material";
+import { Avatar, Button, Card, CardContent, Typography} from "@mui/material";
 import axios from "axios";
 import { format, parse } from "date-fns";
 
