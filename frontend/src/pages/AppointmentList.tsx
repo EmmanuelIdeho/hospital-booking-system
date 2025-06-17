@@ -10,7 +10,7 @@ function AppointmentList() {
   const [appointments, setAppointments] = useState<Appointment[]>([]);
 
   useEffect(() => {
-    axios.get<Appointment[]>(`${baseURL}api/v1/appointments`)
+    axios.get<Appointment[]>(`${baseURL}/api/v1/appointments`)
     .then(response => setAppointments(response.data))
     .catch(err => console.log("Failed to fetch appointments", err));
   }, []);
