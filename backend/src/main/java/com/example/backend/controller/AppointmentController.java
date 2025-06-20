@@ -17,7 +17,7 @@ import jakarta.validation.Valid;
 
 @Validated
 @RestController
-@CrossOrigin(origins = "https://health-appointments.netlify.app/")
+@CrossOrigin(origins = {"${APP_CORS_ALLOWED_ORIGINS}"})
 @RequestMapping("/api/v1")
 public class AppointmentController {
 
