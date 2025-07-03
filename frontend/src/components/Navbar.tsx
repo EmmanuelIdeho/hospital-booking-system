@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 
 function Navbar() {
 
-  const pages = ['Main', 'Book', 'Appointments'];
+  const pages = ['Main', 'Book', 'Appointments', 'Modify'];
   const navigate = useNavigate();
 
   const goToPage = (page: string) => {
