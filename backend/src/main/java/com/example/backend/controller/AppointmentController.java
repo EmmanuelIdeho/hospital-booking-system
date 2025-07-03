@@ -37,7 +37,7 @@ public class AppointmentController {
              if(appointment.getClinicCode() != null && !appointment.getClinicCode().isEmpty()){return ResponseEntity.badRequest().body("You're a bot!");}
             Appointment newAppointment = appointmentService.saveAppointment(appointment);
             smsService.sendSms(appointment.getPhoneNumber(), 
-    "Thank you for booking with us, " + appointment.getPatientName() + "! Your appointment is confirmed for " + appointment.getDate());
+    "Thank you for booking with us, " + appointment.getPatientName() + "! Your appointment is confirmed for " + appointment.getDate()+ " at " + appointment.getTime() + ". Your id# is " + appointment.getId());
             return ResponseEntity.ok(newAppointment);
         }catch(Exception e){
              return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
