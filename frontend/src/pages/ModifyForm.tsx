@@ -94,7 +94,6 @@ function ModifyForm () {
             onChange={handleChange}
             fullWidth
             margin="normal"
-            InputLabelProps={{ shrink: true }}
           />
           <TextField
             label="Time"
@@ -104,7 +103,6 @@ function ModifyForm () {
             onChange={handleChange}
             fullWidth
             margin="normal"
-            InputLabelProps={{ shrink: true }}
           />
           <Button onClick={handleUpdate} variant="contained" sx={{ mt: 2 }}>
             Update Appointment

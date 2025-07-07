@@ -4,6 +4,7 @@ import com.example.backend.model.Appointment;
 import com.example.backend.respository.AppointmentRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -15,14 +16,19 @@ import java.util.Optional;
 public class AppointmentService {
     private final AppointmentRepository appointmentRepository;
 
+    private final SimpMessagingTemplate messagingTemplate;
+
     @Autowired
-    public AppointmentService(AppointmentRepository appointmentRepository){
+    public AppointmentService(AppointmentRepository appointmentRepository, SimpMessagingTemplate messagingTemplate){
         this.appointmentRepository = appointmentRepository;
+        this.messagingTemplate = messagingTemplate;
 
     }
 
     public Appointment saveAppointment(Appointment appointment){
-        return appointmentRepository.save(appointment);
+        Appointment saved = appointmentRepository.save(appointment);
+         messagingTemplate.convertAndSend("/topic/appoint", saved);
+        return saved;
     }
 
     public List<Appointment> getAllAppointments(){

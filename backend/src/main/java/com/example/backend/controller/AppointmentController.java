@@ -61,6 +61,11 @@ public class AppointmentController {
         }
     }
 
+    @GetMapping("/health")
+    public ResponseEntity<String> healthCheck() {
+        return ResponseEntity.ok("OK");
+    }
+
     @PutMapping("/appointments/{id}")
     public ResponseEntity<?> updateAppointment(@PathVariable Long id, @RequestBody Appointment appointment){
         try{
