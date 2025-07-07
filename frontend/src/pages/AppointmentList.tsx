@@ -5,7 +5,7 @@ import axios from "axios";
 import { Box, Grid, Typography } from "@mui/material";
 
 import SockJS from "sockjs-client";
-import { Client, Stomp } from "@stomp/stompjs";
+import { Client } from "@stomp/stompjs";
 
 
 function AppointmentList() {
