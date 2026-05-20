@@ -1,5 +1,7 @@
 # Appointment Booking System 
 
+![CI](https://github.com/EmmanuelIdeho/hospital-booking-system/actions/workflows/ci.yml/badge.svg)
+
 This full-stack web application was built to simplify the process of booking, managing, and viewing medical appointments for clinics, solo practitioners, or small healthcare providers. Patients can easily schedule appointments through a user-friendly interface, while staff can view and manage upcoming bookings in real-time.
 
 ---
@@ -77,6 +79,6 @@ npm run dev
 ---
 
 ## Future Improvements
-- [ ] Appointment editing
+- [x] Appointment editing
 - [ ] Admin login and authentication
 - [ ] Email notfication to client
