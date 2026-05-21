@@ -5,10 +5,10 @@ import { Appointment } from "../types/Appointment";
 
 
 function ModifyForm () {
-    const baseURL = import.meta.env.VITE_API_URL;
-   const [searchId, setSearchID] = useState("");
-   const [appointment, setAppointment] = useState<Appointment | null>(null);
-   const [loading, setLoading] = useState(false);
+  const baseURL = import.meta.env.VITE_API_URL;
+  const [searchId, setSearchID] = useState("");
+  const [appointment, setAppointment] = useState<Appointment | null>(null);
+  const [loading, setLoading] = useState(false);
 
    const fetchAppointment = async () => {
     try {

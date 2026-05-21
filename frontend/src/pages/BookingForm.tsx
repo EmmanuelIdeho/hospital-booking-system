@@ -68,6 +68,7 @@ function BookingForm() {
       </Typography>
 
       <TextField
+        id="patient-name"
         label="Your Name"
         name="patientName"
         value={formData.patientName}
@@ -76,6 +77,7 @@ function BookingForm() {
       />
 
       <TextField
+        id="patient-phone-number"
         label="Phone number"
         type="tel"
         name="phoneNumber"
@@ -85,6 +87,7 @@ function BookingForm() {
       />
 
       <TextField
+        id="patient-email"
         label="Your Email"
         type="email"
         name="email"
@@ -94,6 +97,8 @@ function BookingForm() {
       />
 
       <TextField
+        id="appointment-date"
+        label="Date"
         type="date"
         name="date"
         value={formData.date}
@@ -102,6 +107,8 @@ function BookingForm() {
       />
 
       <TextField
+        id="appointment-time"
+        label="Time"
         type="time"
         name="time"
         value={formData.time}
@@ -110,13 +117,15 @@ function BookingForm() {
       />
 
       <TextField
+      id="clinic-code"
+      label="Clinic Code"
     type="text"
     name="clinicCode"
     style={{ display: "none" }}
     autoComplete="off"
     />
 
-      <Button type="submit" variant="contained" color="primary">
+      <Button id="book" type="submit" variant="contained" color="primary">
         Book Now
       </Button>
     </Box>
