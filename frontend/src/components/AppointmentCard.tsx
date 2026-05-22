@@ -81,16 +81,12 @@ function AppointmentCard({ appointment }: Props) {
             <Typography
               variant="subtitle1"
               fontWeight={700}
-              noWrap
-              title={appointment.patientName}
             >
               {appointment.patientName}
             </Typography>
             <Typography
               variant="body2"
               color="text.secondary"
-              noWrap
-              title={appointment.email}
             >
               {appointment.email}
             </Typography>
