@@ -54,7 +54,7 @@ function AppointmentCard({ appointment }: Props) {
     flexDirection: "column",
     height: "100%",
     width: "100%",      
-    minWidth: 0,         
+    minWidth: 280,         
     borderRadius: 3,
     transition: "box-shadow 0.2s",
     "&:hover": { boxShadow: 4 },
@@ -75,9 +75,7 @@ function AppointmentCard({ appointment }: Props) {
             {appointment.patientName?.[0]?.toUpperCase()}
           </Avatar>
 
-          <Box sx={{ minWidth: 0 }}>
-            {/* minWidth:0 on the parent lets noWrap + ellipsis work correctly
-                inside a flex child — without it the text just overflows. */}
+          <Box>
             <Typography
               variant="subtitle1"
               fontWeight={700}
