@@ -1,6 +1,7 @@
 import { render, screen } from '@testing-library/react'
 import BookingForm from './BookingForm'
 import userEvent from '@testing-library/user-event'
+import { fireEvent } from '@testing-library/react'
 // import your component here
 
 describe('BookingForm', () => {
@@ -21,15 +22,15 @@ it('renders all form fields and a submit button', () => {
     expect(email).toBeInTheDocument()
 
     // Assert: check that the date field exists  
-    const date = screen.getByLabelText(/date/i)
+    const date = screen.getByLabelText(/date/i, { selector: 'input[type="date"]' })
     expect(date).toBeInTheDocument()
 
     // Assert: check that the name field exists
-    const time = screen.getByLabelText(/time/i)
+    const time = screen.getByLabelText(/time/i, { selector: 'input[type="time"]' })
     expect(time).toBeInTheDocument()
 
     // Assert: check that the submit button exists
-    const button = screen.getByRole("button")
+    const button = screen.getByRole("button", { name: /book appointment/i })
     expect(button).toBeInTheDocument()
 })
 
@@ -42,9 +43,9 @@ it('the submit button is disabled when required fields are empty, and enabled on
     const name = screen.getByLabelText(/your name/i)
     const phone = screen.getByLabelText(/phone number/i)
     const email = screen.getByLabelText(/your email/i)
-    const date = screen.getByLabelText(/date/i)
-    const time = screen.getByLabelText(/time/i)
-    const button = screen.getByRole("button")
+    const date = screen.getByLabelText(/date/i, { selector: 'input[type="date"]' })
+    const time = screen.getByLabelText(/time/i, { selector: 'input[type="time"]' })
+    const button = screen.getByRole("button", { name: /book appointment/i })
 
     // Assert: button is disabled on empty form
     expect(button).toBeDisabled()
@@ -53,8 +54,8 @@ it('the submit button is disabled when required fields are empty, and enabled on
     await interact.type(name, "John Doe")
     await interact.type(phone, "6477727132")
     await interact.type(email, "johndoe@gmail.com")
-    await interact.type(date, "03/03/2026")
-    await interact.type(time, "9:30")
+    fireEvent.change(date, {target: {value: "2026-03-03"}})
+    fireEvent.change(time, { target: { value: "09:30" } })
 
     // Assert: button is now enabled
     expect(button).toBeEnabled()
