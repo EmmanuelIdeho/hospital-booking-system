@@ -48,16 +48,18 @@ function AppointmentCard({ appointment }: Props) {
     // stretch to the same height, so the grid doesn't look ragged when names
     // or email addresses are different lengths.
     <Card
-      variant="outlined"
-      sx={{
-        display: "flex",
-        flexDirection: "column",
-        height: "100%",
-        borderRadius: 3,
-        transition: "box-shadow 0.2s",
-        "&:hover": { boxShadow: 4 },
-      }}
-    >
+  variant="outlined"
+  sx={{
+    display: "flex",
+    flexDirection: "column",
+    height: "100%",
+    width: "100%",      
+    minWidth: 0,         
+    borderRadius: 3,
+    transition: "box-shadow 0.2s",
+    "&:hover": { boxShadow: 4 },
+  }}
+>
       {/* Top section: avatar + name + contact */}
       <CardContent sx={{ flex: 1, pb: 1 }}>
         <Box sx={{ display: "flex", alignItems: "center", gap: 2, mb: 1.5 }}>
@@ -107,12 +109,14 @@ function AppointmentCard({ appointment }: Props) {
             label={formatDate}
             size="small"
             variant="outlined"
+            sx={{ maxWidth: "100%" }} 
           />
           <Chip
             icon={<AccessTimeIcon />}
             label={formatTime}
             size="small"
             variant="outlined"
+            sx={{ maxWidth: "100%" }} 
           />
         </Box>
       </CardContent>
@@ -122,7 +126,7 @@ function AppointmentCard({ appointment }: Props) {
       <Box sx={{ px: 2, pb: 2 }}>
         <Button
           color="error"
-          variant="outlined"
+          variant="text"
           fullWidth
           onClick={() => cancelAppointment(appointment.id ?? 0)}
         >
