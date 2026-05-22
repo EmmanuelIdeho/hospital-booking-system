@@ -101,7 +101,7 @@ function AppointmentList() {
       {!loading && appointments.length > 0 && (
         <Grid container spacing={{ xs: 2, sm: 3 }}>
           {appointments.map((app) => (
-            <Grid size={{ xs: 12, sm: 6, md: 6 }} key={app.id}>
+            <Grid size={{ xs: 12, sm: 12, md: 6 }} key={app.id}>
               <AppointmentCard appointment={app} />
             </Grid>
           ))}

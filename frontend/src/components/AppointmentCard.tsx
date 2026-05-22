@@ -87,6 +87,7 @@ function AppointmentCard({ appointment }: Props) {
             <Typography
               variant="body2"
               color="text.secondary"
+              sx={{ wordBreak: "break-word" }}
             >
               {appointment.email}
             </Typography>
@@ -125,6 +126,7 @@ function AppointmentCard({ appointment }: Props) {
           variant="text"
           fullWidth
           onClick={() => cancelAppointment(appointment.id ?? 0)}
+          sx={{ whiteSpace: "nowrap" }}
         >
           Cancel Appointment
         </Button>
