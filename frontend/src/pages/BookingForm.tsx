@@ -3,8 +3,10 @@ import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
 import axios from "axios";
 import { Appointment } from "../types/Appointment";
 import { useState } from "react";
+import { useAppointments } from "../context/AppointmentContext";
 
 function BookingForm() {
+  const { addAppointment } = useAppointments()
   const [formData, setFormData] = useState<Appointment>({
     patientName: "",
     phoneNumber: "",
@@ -12,6 +14,7 @@ function BookingForm() {
     date: "",
     time: "",
   });
+
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -42,6 +45,7 @@ function BookingForm() {
         newAppointment
       );
       console.log(response.data);
+      addAppointment(response.data)
       setFormData({
         patientName: "",
         phoneNumber: "",
@@ -56,10 +60,6 @@ function BookingForm() {
   };
 
   return (
-    // Outer wrapper: centres the card and pushes it below the fixed AppBar.
-    // mt uses a responsive value — the AppBar is taller on desktop (64px ≈ 8
-    // spacing units) than on mobile (56px ≈ 7 units), so we add a little extra
-    // breathing room on top of that.
     <Box
       sx={{
         minHeight: "100vh",
@@ -81,8 +81,6 @@ function BookingForm() {
           display: "flex",
           flexDirection: "column",
           gap: { xs: 2, sm: 2.5 },
-          // Generous padding on desktop, tighter on mobile so the form
-          // doesn't feel cramped against the screen edges.
           p: { xs: 3, sm: 4 },
           borderRadius: 3,
         }}
@@ -127,8 +125,6 @@ function BookingForm() {
           fullWidth
         />
 
-        {/* Date and time sit side by side on all screen sizes since they
-            are short fields — this saves vertical space on mobile. */}
         <Box sx={{ display: "flex", gap: 2 }}>
           <TextField
             id="appointment-date"
@@ -155,7 +151,6 @@ function BookingForm() {
           />
         </Box>
 
-        {/* Honeypot — hidden from users and screen readers */}
         <TextField
           id="clinic-code"
           label="Clinic Code"
