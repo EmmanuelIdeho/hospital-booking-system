@@ -4,14 +4,30 @@ import userEvent from '@testing-library/user-event'
 import { fireEvent } from '@testing-library/react'
 import axios from 'axios'
 import { vi } from 'vitest'
+import { AppointmentProvider } from '../context/AppointmentContext'
+
+const renderWithProvider = () => {
+  return render(
+    <AppointmentProvider>
+      <BookingForm />
+    </AppointmentProvider>
+  )
+}
+
 
 vi.mock('axios')
 window.alert = vi.fn()
 
+
+
 describe('BookingForm', () => {
+    beforeEach(() => {
+    vi.mocked(axios.get).mockResolvedValue({ data: [] })
+    })
+
 it('renders all form fields and a submit button', () => {
     // Arrange: render the component
-    render(<BookingForm />)
+    renderWithProvider()
     
     // Assert: check that the name field exists
     const name = screen.getByLabelText(/your name/i)
@@ -42,7 +58,7 @@ it('the submit button is disabled when required fields are empty, and enabled on
 
     // Arrange: Required fields
     const interact = userEvent.setup() 
-    render(<BookingForm />)
+    renderWithProvider()
 
     const name = screen.getByLabelText(/your name/i)
     const phone = screen.getByLabelText(/phone number/i)
@@ -70,7 +86,7 @@ it('the submit button is disabled when required fields are empty, and enabled on
 it('submits the form and calls axios.post with the correct data', async() => {
     // Arrange: Required fields
     const interact = userEvent.setup() 
-    render(<BookingForm />)
+    renderWithProvider()
 
     const mockedPost = vi.mocked(axios.post)
     mockedPost.mockResolvedValueOnce({
