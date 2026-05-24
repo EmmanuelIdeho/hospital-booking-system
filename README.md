@@ -76,9 +76,3 @@ npm run dev
 - [x] PostgreSQL support
 - [x] SMS notification to client
 
----
-
-## Future Improvements
-- [x] Appointment editing
-- [ ] Admin login and authentication
-- [ ] Email notfication to client
